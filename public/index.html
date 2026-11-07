@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#080b16">
+  <title>KHANH AI</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="logo">K</span><div><b>KHANH AI</b><small>Personal AI assistant</small></div></div>
+      <button id="newChat" class="primary full">＋ Cuộc trò chuyện mới</button>
+      <div class="side-label">LỊCH SỬ</div>
+      <div id="chatList" class="chat-list"></div>
+      <div class="side-bottom"><span class="dot"></span> Cloud AI</div>
+    </aside>
+    <main class="main">
+      <header><div><span class="eyebrow">YOUR PERSONAL AI</span><h1>Xin chào, <span id="userName">bạn</span> 👋</h1><p>Hôm nay bạn muốn khám phá điều gì?</p></div>
+        <button id="signOut" class="ghost hidden">Đăng xuất</button></header>
+      <section id="loginPanel" class="panel login-panel">
+        <div class="spark">✦</div><h2>Bắt đầu với KHANH AI</h2>
+        <p>Đăng nhập Google để lưu hồ sơ cá nhân và lịch sử trò chuyện riêng tư.</p>
+        <div id="googleButton"></div>
+        <small class="muted">Không chia sẻ mật khẩu Google với KHANH AI.</small>
+      </section>
+      <section id="appPanel" class="hidden">
+        <div class="panel survey">
+          <div class="section-head"><div><span class="eyebrow">CÁ NHÂN HÓA</span><h2>Giúp AI hiểu bạn hơn</h2></div><button id="savePrefs" class="secondary">Lưu hồ sơ</button></div>
+          <div class="fields">
+            <label>Lớp / trình độ<input id="grade" placeholder="Ví dụ: Lớp 9"></label>
+            <label>Cách bạn muốn AI viết<input id="writingStyle" placeholder="Ví dụ: ngắn gọn, dễ hiểu, có ví dụ"></label>
+            <label>Cách học phù hợp<input id="learningStyle" placeholder="Ví dụ: giải thích từng bước"></label>
+            <label>Sở thích / chủ đề quan tâm<input id="interests" placeholder="Ví dụ: công nghệ, lập trình, bóng đá"></label>
+          </div>
+          <p class="muted tiny">Chỉ nhập thông tin bạn thấy thoải mái chia sẻ. Có thể sửa hoặc để trống bất cứ lúc nào.</p>
+        </div>
+        <div id="messages" class="messages"><div class="welcome">✦<h2>KHANH AI sẵn sàng!</h2><p>Hãy nhập câu hỏi đầu tiên bên dưới.</p></div></div>
+        <form id="chatForm" class="composer"><textarea id="prompt" rows="2" maxlength="4000" placeholder="Nhắn tin với KHANH AI..." required></textarea><button class="send" type="submit">Gửi ↑</button></form>
+      </section>
+      <footer>KHANH AI · Bản thử nghiệm · AI có thể mắc lỗi, hãy kiểm tra thông tin quan trọng.</footer>
+    </main>
+  </div>
+  <script src="/app.js"></script>
+</body>
+</html>
