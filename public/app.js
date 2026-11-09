@@ -1,4 +1,4 @@
-const CLIENT_ID = "REPLACE_WITH_GOOGLE_OAUTH_CLIENT_ID";
+const CLIENT_ID = "1088685907571-omeself92bfujjfh05s70gemvp20pcsi.apps.googleusercontent.com";
 const $ = id => document.getElementById(id);
 let credential = null, currentChat = null;
 
