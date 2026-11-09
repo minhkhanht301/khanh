@@ -1,12 +1,12 @@
 {
-  "name": "khanh-ai",
+  "name": "hn-ai",
   "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "wrangler dev",
     "deploy": "wrangler deploy",
-    "db:create": "wrangler d1 create khanh-ai-db",
-    "db:migrate": "wrangler d1 migrations apply khanh-ai-db --remote"
+    "db:create": "wrangler d1 create hn-ai-db",
+    "db:migrate": "wrangler d1 migrations apply hn-ai-db --remote"
   },
   "devDependencies": {
     "wrangler": "^4.0.0"
