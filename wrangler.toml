@@ -1,4 +1,4 @@
-name = "khanh-ai"
+name = "hn-ai-preview"
 main = "src/worker.js"
 compatibility_date = "2026-11-01"
 
@@ -12,8 +12,8 @@ binding = "AI"
 
 [[d1_databases]]
 binding = "DB"
-database_name = "khanh-ai-db"
-database_id = "c72c3c3e-3f8e-4296-8875-38adb16360ea"
+database_name = "hn-ai-db"
+database_id = "REPLACE_WITH_NEW_HN_AI_D1_DATABASE_ID"
 
 [vars]
 GOOGLE_CLIENT_ID = "1088685907571-omeself92bfujjfh05s70gemvp20pcsi.apps.googleusercontent.com"
