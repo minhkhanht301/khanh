@@ -2,45 +2,98 @@
 <html lang="vi">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#080b16">
-  <title>KHANH AI</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#10243a">
+  <meta name="description" content="HN AI - Trợ lý học tập tiếng Việt dành cho học sinh lớp 6 đến lớp 9.">
+  <title>HN AI – Hiểu đúng, học thông minh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/style.css">
   <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
-  <div class="shell">
-    <aside class="sidebar">
-      <div class="brand"><span class="logo">K</span><div><b>KHANH AI</b><small>Personal AI assistant</small></div></div>
-      <button id="newChat" class="primary full">＋ Cuộc trò chuyện mới</button>
-      <div class="side-label">LỊCH SỬ</div>
-      <div id="chatList" class="chat-list"></div>
-      <div class="side-bottom"><span class="dot"></span> Cloud AI</div>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="/" aria-label="HN AI trang chủ">
+        <span class="brand-mark"><span>H</span><i>✦</i></span>
+        <span><b>HN AI</b><small>TRỢ LÝ HỌC TẬP VIỆT</small></span>
+      </a>
+      <button id="newChat" class="new-chat"><span>＋</span> Cuộc trò chuyện mới</button>
+      <div class="side-caption">KHÔNG GIAN HỌC TẬP</div>
+      <nav class="side-links">
+        <a class="side-link active" href="#chat"><span>✧</span> Trò chuyện</a>
+        <a class="side-link" href="#learn"><span>▦</span> Khám phá môn học</a>
+      </nav>
+      <div class="side-caption history-caption">LỊCH SỬ GẦN ĐÂY</div>
+      <div id="chatList" class="chat-list"><p class="side-empty">Các cuộc trò chuyện sẽ xuất hiện ở đây.</p></div>
+      <div class="sidebar-bottom">
+        <div class="vietnam-stamp">✳ <span>Tri thức Việt · Tương lai số</span></div>
+        <div class="privacy-note">Hãy tránh chia sẻ thông tin cá nhân nhạy cảm.</div>
+      </div>
     </aside>
-    <main class="main">
-      <header><div><span class="eyebrow">YOUR PERSONAL AI</span><h1>Xin chào, <span id="userName">bạn</span> 👋</h1><p>Hôm nay bạn muốn khám phá điều gì?</p></div>
-        <button id="signOut" class="ghost hidden">Đăng xuất</button></header>
-      <section id="loginPanel" class="panel login-panel">
-        <div class="spark">✦</div><h2>Bắt đầu với KHANH AI</h2>
-        <p>Đăng nhập Google để lưu hồ sơ cá nhân và lịch sử trò chuyện riêng tư.</p>
-        <div id="googleButton"></div>
-        <small class="muted">Không chia sẻ mật khẩu Google với KHANH AI.</small>
-      </section>
-      <section id="appPanel" class="hidden">
-        <div class="panel survey">
-          <div class="section-head"><div><span class="eyebrow">CÁ NHÂN HÓA</span><h2>Giúp AI hiểu bạn hơn</h2></div><button id="savePrefs" class="secondary">Lưu hồ sơ</button></div>
-          <div class="fields">
-            <label>Lớp / trình độ<input id="grade" placeholder="Ví dụ: Lớp 9"></label>
-            <label>Cách bạn muốn AI viết<input id="writingStyle" placeholder="Ví dụ: ngắn gọn, dễ hiểu, có ví dụ"></label>
-            <label>Cách học phù hợp<input id="learningStyle" placeholder="Ví dụ: giải thích từng bước"></label>
-            <label>Sở thích / chủ đề quan tâm<input id="interests" placeholder="Ví dụ: công nghệ, lập trình, bóng đá"></label>
-          </div>
-          <p class="muted tiny">Chỉ nhập thông tin bạn thấy thoải mái chia sẻ. Có thể sửa hoặc để trống bất cứ lúc nào.</p>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="Mở menu">☰</button>
+        <div class="topbar-title"><span class="eyebrow">KHÔNG GIAN HỌC TẬP THÔNG MINH</span><strong>HN AI <span class="online-dot"></span></strong></div>
+        <div class="topbar-actions">
+          <span class="edition">BẢN THỬ NGHIỆM</span>
+          <button id="signOut" class="signout hidden">Đăng xuất</button>
         </div>
-        <div id="messages" class="messages"><div class="welcome">✦<h2>KHANH AI sẵn sàng!</h2><p>Hãy nhập câu hỏi đầu tiên bên dưới.</p></div></div>
-        <form id="chatForm" class="composer"><textarea id="prompt" rows="2" maxlength="4000" placeholder="Nhắn tin với KHANH AI..." required></textarea><button class="send" type="submit">Gửi ↑</button></form>
+      </header>
+
+      <section id="loginPanel" class="login-wrap">
+        <div class="hero-emblem"><span>H</span><i>✦</i></div>
+        <div class="hero-kicker">CHÀO MỪNG BẠN ĐẾN VỚI HN AI</div>
+        <h1>Hiểu đúng kiến thức.<br><em>Vững bước tương lai.</em></h1>
+        <p class="hero-copy">Một người bạn học tập bằng tiếng Việt, giúp bạn hiểu bài từng bước từ lớp 6 đến lớp 9.</p>
+        <div class="login-card">
+          <h2>Bắt đầu hành trình học tập</h2>
+          <p>Đăng nhập để lưu hồ sơ và lịch sử trò chuyện trên thiết bị của bạn.</p>
+          <div id="googleButton"></div>
+          <small>Không bao giờ chia sẻ mật khẩu Google với HN AI.</small>
+        </div>
+        <div class="hero-values"><span>✦ Dễ hiểu</span><span>✦ Tôn trọng</span><span>✦ Ham học hỏi</span></div>
       </section>
-      <footer>KHANH AI · Bản thử nghiệm · AI có thể mắc lỗi, hãy kiểm tra thông tin quan trọng.</footer>
+
+      <section id="appPanel" class="workspace hidden">
+        <div class="welcome-block" id="welcomeBlock">
+          <div class="welcome-symbol">✳</div>
+          <div class="eyebrow">MỖI NGÀY MỘT ĐIỀU MỚI</div>
+          <h1>Xin chào, <span id="userName">bạn</span>!</h1>
+          <p>Bạn đang muốn tìm hiểu điều gì hôm nay?</p>
+        </div>
+
+        <section class="profile-card" id="profileCard">
+          <div class="profile-heading"><div><span class="eyebrow">CÁ NHÂN HÓA</span><h2>Để HN AI hỗ trợ đúng cách hơn</h2></div><button id="skipPrefs" class="text-button">Để sau ↗</button></div>
+          <div class="profile-fields">
+            <label>Lớp đang học<select id="grade"><option value="">Chưa chọn</option><option>Lớp 6</option><option>Lớp 7</option><option>Lớp 8</option><option>Lớp 9</option></select></label>
+            <label>Cách giải thích<input id="learningStyle" placeholder="Ví dụ: từng bước, dễ hiểu"></label>
+            <label>Môn học quan tâm<input id="interests" placeholder="Ví dụ: Toán, Ngữ văn, Khoa học"></label>
+          </div>
+          <div class="profile-footer"><span>Bạn có thể bỏ qua hoặc cập nhật bất cứ lúc nào.</span><button id="savePrefs" class="small-primary">Lưu lựa chọn</button></div>
+        </section>
+
+        <div id="messages" class="messages" aria-live="polite">
+          <div class="empty-state"><div class="empty-icon">✧</div><h2>HN AI sẵn sàng đồng hành!</h2><p>Hỏi bài, nhờ giải thích hoặc gửi ảnh bài tập để bắt đầu.</p></div>
+        </div>
+
+        <div id="imagePreview" class="image-preview hidden"><img id="previewImage" alt="Ảnh đính kèm xem trước"><div><b id="imageName">Ảnh đã chọn</b><small>Ảnh chỉ được gửi khi bạn nhấn nút gửi.</small></div><button id="removeImage" aria-label="Bỏ ảnh">×</button></div>
+        <form id="chatForm" class="composer">
+          <input id="imageInput" type="file" accept="image/png,image/jpeg,image/webp" hidden>
+          <button type="button" id="attachImage" class="attach-button" aria-label="Đính kèm hình ảnh" title="Gửi ảnh bài tập">＋</button>
+          <textarea id="prompt" rows="1" maxlength="4000" placeholder="Nhập câu hỏi hoặc mô tả ảnh bạn gửi..." required></textarea>
+          <button class="send-button" type="submit" aria-label="Gửi câu hỏi">↑</button>
+        </form>
+        <div class="composer-hint"><span>↳ Hỗ trợ ảnh PNG, JPG, WebP · tối đa 4 MB</span><span>HN AI có thể mắc lỗi, hãy kiểm tra thông tin quan trọng.</span></div>
+      </section>
+
+      <section id="learn" class="learn-strip hidden">
+        <span class="eyebrow">GỢI Ý KHÁM PHÁ</span>
+        <div class="subject-chips"><button data-prompt="Giúp mình học Toán lớp 9 bằng cách giải thích từng bước.">∑ Toán</button><button data-prompt="Giúp mình phân tích một tác phẩm Ngữ văn lớp 9 dễ hiểu.">文 Ngữ văn</button><button data-prompt="Giải thích một chủ điểm Tiếng Anh lớp 8 bằng ví dụ.">A English</button><button data-prompt="Giải thích một hiện tượng Khoa học tự nhiên dễ hiểu.">⚗ Khoa học</button></div>
+      </section>
+      <footer class="page-footer">HN AI · Sản phẩm thử nghiệm giáo dục Việt Nam <span>Thông tin quan trọng cần được kiểm tra từ tài liệu đáng tin cậy.</span></footer>
     </main>
   </div>
   <script src="/app.js"></script>
