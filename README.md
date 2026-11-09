@@ -1,51 +1,36 @@
-# KHANH AI – Cloudflare Workers starter
+# HN AI – Trợ lý học tập Việt Nam
 
-This is a public-beta starter, not a production-audited service. It uses:
-- Cloudflare Workers for the API and static website
-- Cloudflare D1 for user profiles and chat history
-- Cloudflare Workers AI for text chat
-- Google Identity Services for Google sign-in
+HN AI là bản phát triển thử nghiệm dành cho việc học tập tiếng Việt, ưu tiên học sinh lớp 6–9. Giao diện kết hợp cảm hứng Việt Nam hiện đại với phong cách công nghệ.
 
-## Before you begin
-Ask a parent/guardian to help manage the Cloudflare and Google developer accounts and review the applicable age, privacy, and service terms. Do not collect sensitive personal information from users. Publish a privacy notice and contact channel before inviting the public.
+## Tính năng trong bản đầu tiên
+- Giao diện responsive cho máy tính, máy tính bảng và điện thoại.
+- Đăng nhập Google bằng Google Identity Services.
+- Hồ sơ học tập tùy chọn, có thể bỏ qua.
+- Chat và lưu lịch sử bằng Cloudflare D1.
+- Đính kèm ảnh JPG/PNG/WebP tối đa 4 MB để mô hình Vision phân tích.
+- Trả lời theo hướng dễ hiểu, tôn trọng, có gợi ý học tiếp.
+- API kiểm tra trạng thái tại /api/health.
 
-## 1. Create a D1 database
-In Cloudflare Dashboard: **Storage & databases → D1 SQL Database → Create**.
-Name it `khanh-ai-db`. Copy its database ID into `wrangler.toml`, replacing `REPLACE_WITH_YOUR_D1_DATABASE_ID`.
+## Công nghệ
+- Cloudflare Workers + Workers AI
+- Cloudflare D1
+- HTML, CSS, JavaScript thuần
 
-## 2. Create Google OAuth web client
-In Google Cloud Console, configure the OAuth consent screen and create an OAuth Client ID of type **Web application**.
-Add your final website origin to **Authorized JavaScript origins** (for example `https://YOUR-WORKER.YOUR-SUBDOMAIN.workers.dev`).
-Copy the Client ID. Replace `REPLACE_WITH_GOOGLE_OAUTH_CLIENT_ID` in both:
-- `wrangler.toml` (`GOOGLE_CLIENT_ID`)
-- `public/app.js` (`CLIENT_ID`)
-Never put a Google client secret in frontend code. This app uses Google Identity Services ID tokens.
+## Triển khai thử nghiệm tách biệt
+Nhánh Git: hn-ai-v1. Worker preview: hn-ai-preview. Dự án này được cấu hình dùng D1 riêng, không dùng cơ sở dữ liệu KHANH AI hiện tại.
 
-## 3. Apply the database migration
-Install Node.js only if you choose the command-line deployment route. From this project folder:
-```bash
-npm install
-npx wrangler d1 migrations apply khanh-ai-db --remote
-```
+1. Trong Cloudflare Dashboard, tạo D1 database mới tên hn-ai-db.
+2. Thay REPLACE_WITH_NEW_HN_AI_D1_DATABASE_ID trong wrangler.toml bằng ID của database vừa tạo. Không dùng ID database của KHANH AI.
+3. Trong Google Cloud Console, thêm URL preview HN AI vào Authorized JavaScript origins của OAuth Web Client đang dùng. Không chia sẻ client secret.
+4. Chạy npm install.
+5. Chạy npx wrangler d1 migrations apply hn-ai-db --remote để tạo bảng.
+6. Kiểm tra binding Workers AI tên AI đã được bật.
+7. Đồng ý Meta License và Acceptable Use Policy trước lần gọi đầu tiên tới mô hình Vision theo hướng dẫn chính thức của Cloudflare.
+8. Chạy npx wrangler deploy để triển khai worker preview riêng.
 
-## 4. Enable Workers AI
-In Cloudflare Dashboard, open Workers & Pages → AI / Workers AI and confirm your account has access to Workers AI. The worker uses `@cf/meta/llama-3.1-8b-instruct`. Model availability and pricing/quotas depend on Cloudflare's current offering.
-
-## 5. Deploy
-From the project folder:
-```bash
-npx wrangler login
-npx wrangler deploy
-```
-Alternatively, connect this repository to Cloudflare Workers Builds/Git integration and configure the build command `npm install` and deploy command `npx wrangler deploy`.
-
-## 6. Verify
-Open your `workers.dev` URL. Check `/api/health`, then test Google sign-in, save a profile, send a short chat message, and verify that a second Google account cannot see the first account's history.
-
-## Important limitations before public launch
-- This starter has not undergone an independent security audit or load test.
-- Add a published privacy policy, support contact, abuse reporting, monitoring, stronger rate limiting, and backup/restore procedures before public launch.
-- The sample has a daily per-user message cap, but it is not a full anti-abuse system.
-- Image understanding and voice input/output are not implemented in this starter.
-- Google token verification fetches Google's public signing keys on each API request; optimize with safe caching before scaling.
-- Review current Cloudflare and Google terms, age requirements, and data protection obligations for your audience.
+## Giới hạn cần biết
+- Tìm kiếm Internet trực tiếp và trích dẫn nguồn chưa được tích hợp. Không được tuyên bố đã tra Google khi chưa có công cụ tìm kiếm hoạt động.
+- Ảnh gửi lên được chuyển tới mô hình để phân tích, hiện chưa lưu trong lịch sử D1.
+- Workers AI có hạn mức và mức tính phí thay đổi theo tài khoản/model. Đặc biệt mô hình Vision không nên được xem là miễn phí vô hạn; kiểm tra bảng giá và giới hạn hiện hành trước khi bật công khai.
+- AI có thể sai. Cần đánh giá bằng bộ câu hỏi có đáp án chuẩn, kiểm tra nguồn và thử nghiệm bảo mật trước khi dự thi hoặc công khai.
+- Trước khi mời người dùng thật, hãy nhờ người lớn hỗ trợ rà soát điều khoản dịch vụ, chính sách riêng tư, bảo vệ dữ liệu, giới hạn sử dụng và cách liên hệ hỗ trợ.
