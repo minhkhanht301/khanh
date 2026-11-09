@@ -145,9 +145,9 @@ Cá nhân hóa theo hồ sơ người dùng nếu có: lớp ${prefs.grade || "c
 Giải thích rõ ràng, không bịa thông tin. Nếu không biết, hãy nói rõ.`;
     let answer = "";
     try {
-      const result = await env.AI.run("@cf/meta/llama-3.1-8b-instruct", {
-        messages: [{ role: "system", content: system }, ...history]
-      });
+     const result = await env.AI.run("@cf/zai-org/glm-4.7-flash", {
+  messages: [{ role: "system", content: system }, ...history]
+});
       answer = result.response || result.output_text || "Mình chưa tạo được câu trả lời.";
     } catch (e) {
       return json({ error: "AI đang bận hoặc mô hình chưa được bật. Hãy kiểm tra Workers AI trong Cloudflare." }, 503);
